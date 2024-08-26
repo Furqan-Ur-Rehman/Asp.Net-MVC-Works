@@ -1,0 +1,91 @@
+﻿@model List<Strongly_typed_view.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@{
+    var a = (Strongly_typed_view.Models.Employee)ViewData["emp1"];
+    var b = ViewBag.emp2;
+}
+
+<h1>ViewData Data</h1>
+<h3>@a.Id</h3>
+<h3>@a.Name</h3>
+<h3>@a.Age</h3>
+
+<br />
+<br />
+
+<h1>ViewBag Data</h1>
+<h3>@b.Id</h3>
+<h3>@b.Name</h3>
+<h3>@b.Age</h3>
+
+<br />
+<br />
+
+<h1>Strongly Typed View Data</h1>
+@*<h3>@Model.Id</h3>
+    <h3>@Model.Name</h3>
+    <h3>@Model.Age</h3>*@
+<ul>
+    @{
+        //Here below in Model is List of objects i.e. employee, employee1, employee2
+        foreach (var data in Model)
+        {
+            <li>@data.Id</li>
+            <li>@data.Name</li>
+            <li>@data.Age</li>
+            
+        }
+
+    }
+
+</ul>
+<br />
+
+<h1>Partial View</h1>
+@Html.Partial("_EmployeeList")
+
+<br />
+<br />
+<h1>Render Partial View</h1>
+@{
+    Html.RenderPartial("_EmployeeList");
+}
+
+<br />
+<br />
+
+<h1>Login Form through Partial View</h1>
+
+@Html.Partial("_LoginPartialView");
+
+<br />
+<br />
+
+<h1>Login Form through Render Partial View</h1>
+
+@{
+    Html.RenderPartial("_LoginPartialView");
+}
+
+<br />
+<br />
+<h1>Data added through Html.Partial</h1>
+@{
+    var list = Html.Partial("_EmployeeList");
+    list = new MvcHtmlString("<h3>Here is Employee List: </h3>" + list.ToString());
+
+}
+
+@list
+
+
+<h1>Data through Render Partial</h1>
+@{
+    Html.RenderPartial("_EmployeeList");
+}

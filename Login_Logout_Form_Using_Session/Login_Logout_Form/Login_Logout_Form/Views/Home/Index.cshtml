@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h3 style="font-weight:bold; color:darkgreen; font-size:25px;">Welcome, Data Access from Session: @Session["data"]!!</h3>
+<h3 style="font-weight:bold; color:darkgreen; font-size:25px;">Welcome, Data Access from Cookie: @ViewBag.Cookie_Value!!</h3>
+<p>@Html.ActionLink("Logout", "Logout", "Login")</p>

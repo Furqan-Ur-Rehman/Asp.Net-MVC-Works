@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "AboutUs";
+}
+
+<h2>AboutUs</h2>
+
+<h1>Single Data bind in ViewData[]</h1>
+<h3>@ViewData["Message"]</h3>
+<h3>@ViewData["current_time"]</h3>
+
+<hr />
+
+<h1>Array</h1>
+
+<ul>
+    @{
+        foreach (string data in (string[])ViewData["lang"])
+        {
+            <li>@data</li>
+        }
+    }
+</ul>
+
+<hr />
+
+<h1>List</h1>
+<ul>
+    @{
+        foreach (string data in (List<string>)ViewData["fruits_list"])
+        {
+            <li>@data</li>
+        }
+    }
+</ul>
+
+<hr />
+
+<h1>Object</h1>
+
+@{
+    var data_obj = (first_web_app.Models.Employee)ViewData["emp_obj"];
+}
+<ul>
+    <li>@data_obj.EmployeeId</li>
+    <li>@data_obj.EmployeeName</li>
+    <li>@data_obj.EmployeeDesig</li>
+</ul>
+
+<br />
+<br />
+
+@*Html links with Razor Syntax*@
+
+@Html.ActionLink("Clickme", "Index", "Home")
+@Html.ActionLink("Temp_data", "Temp_data", "Home")
+<a href="@Url.Action("AboutUs","Home")">About Us</a>
+@Html.ActionLink("Trans_data", "Trans_data", "Home")
+
+<br />
+<br />
+
+<input type="text" id="fullname" name="fullname" title="Enter Name" />
+
+<br />
+<br />
+
+@*Html Helper Method Html.TextBox()*@
+@Html.TextBox("FullName")
+
+<br />
+<br />
+
+@Html.TextBox("FullName", "Enter Your Name", new
+{
+    style = "background-color:lightgray; font-weight:bold; color:red;",
+    title = "Please Enter Your Name"
+})
+
+<br />
+<br />
+
+@Html.TextBox("LastName", "Enter Your Name", new
+{
+    @class = "textbox",
+    title = "Please Enter Name"
+})
+
+<br />
+<br />
+
+@Html.TextBox("SpouseName", "Dua", new
+{
+    @class = "form-control",
+    @readonly = true
+})
+
+<br />
+<br />
+<br />
+<h2>Create Form</h2>
+
+@{
+    Html.BeginForm("Index", "Home", FormMethod.Post);
+}
+
+@Html.Label("UserName:", htmlAttributes : new { style = "font-weight:bold; color:lightgray;" }) &nbsp; @Html.TextBox("UserName", "", new { @class = "form-control", @placeholder = "Enter Your name", title = "Enter User Name" })
+
+@Html.Label("Spouse Name:", new { style = "font-weight:bold; color:lightgray;" })
+@Html.TextBox("SpouseName", "", new { @class = "form-control", @placeholder = "Enter Spouse Name", title = "Spouse Name" })
+
+@Html.Label("Password") &nbsp;
+@Html.Password("pass", "", new { @class = "form-control", @placeholder = "password", title = "Password" })
+
+@Html.Label("Male") &nbsp; @Html.RadioButton("Gender", "Male", true)
+@Html.Label("Female") &nbsp; @Html.RadioButton("Gender", "Female")
+
+<br />
+<br />
+
+@Html.Label("Select Country")
+@Html.DropDownList("CountryName", new SelectList(new[] { "Pakistan", "India", "SriLanka", "Bangladesh" }), "Select")
+
+<br />
+<br />
+
+@Html.Label("Comments:")
+@Html.TextArea("textarea", "", 5, 20, new { @class="form-control"})
+
+<br />
+<br />
+@Html.CheckBox("checkterms", true) &nbsp; @Html.Label("I Accept the Terms and Conditions")
+
+<br />
+<br />
+@Html.Hidden("id", "23")
+
+<br />
+<br />
+<input type="submit" value="Submit" class="form-control btn btn-primary" />
+@{
+    Html.EndForm();
+}

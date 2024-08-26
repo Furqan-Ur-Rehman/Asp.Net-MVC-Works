@@ -1,0 +1,62 @@
+﻿@model Data_Anotation.Models.Employee
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.LabelFor(model => model.EmployeeId) &nbsp; @Html.TextBoxFor(model => model.EmployeeId, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EmployeeId, "Error", new { @class = "text-danger font-weight-bold" })
+    </p>
+    <p>
+        @Html.LabelFor(model => model.EmployeeName) &nbsp; @Html.TextBoxFor(model => model.EmployeeName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EmployeeName, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+    <p>
+        @Html.LabelFor(model => model.EmployeeAge) &nbsp; @Html.TextBoxFor(model => model.EmployeeAge, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.EmployeeAge, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+    <p>
+        @Html.LabelFor(getData => getData.EmployeeGender) &nbsp; @Html.DropDownListFor(getData => getData.EmployeeGender, new SelectList(new[] { "Male", "Female" }), "Select Gender", new { @class = "form-control" })
+        @Html.ValidationMessageFor(getData => getData.EmployeeGender, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+    <p>
+        @Html.LabelFor(retrieveData => retrieveData.EmployeeEmail) &nbsp; @Html.TextBoxFor(retrieveData => retrieveData.EmployeeEmail, new { @class = "form-control" })
+        @Html.ValidationMessageFor(retrieveData => retrieveData.EmployeeEmail, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+    <p>
+        @Html.LabelFor(pass => pass.EmpPassword) &nbsp; @Html.EditorFor(pass => pass.EmpPassword, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(pass => pass.EmpPassword, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+
+    <p>
+        @Html.LabelFor(confirmpass => confirmpass.EmpConfirmPassword) &nbsp; @Html.PasswordFor(confirmpass => confirmpass.EmpConfirmPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(confirmpass => confirmpass.EmpConfirmPassword, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+
+    <p>
+        @Html.LabelFor(readdata => readdata.EmpOrganizationName) &nbsp; @Html.TextBoxFor(readdata => readdata.EmpOrganizationName, new { @class = "form-control", @Value = "ABC Organization", @readonly = "true" })
+        @Html.ValidationMessageFor(readdata => readdata.EmpOrganizationName, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+
+    <p>
+        @Html.LabelFor(model => model.EmpAddress) &nbsp; @Html.EditorFor(model => model.EmpAddress, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.EmpAddress, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+
+    <p>
+        @Html.LabelFor(model => model.EmpJoinningDate) &nbsp; @Html.EditorFor(model => model.EmpJoinningDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.EmpJoinningDate, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+
+    <p>
+        @Html.DisplayNameFor(model => model.EmpJoinningTime) &nbsp; @Html.EditorFor(model => model.EmpJoinningTime, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.EmpJoinningTime, "", new { @class = "text-danger font-weight-bold" })
+    </p>
+
+    <input type="submit" value="Submit" class="btn btn-info form-control" />
+    @Html.Raw(@ViewData["data_submission"]);
+}

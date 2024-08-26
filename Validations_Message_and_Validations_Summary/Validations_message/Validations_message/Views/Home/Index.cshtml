@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2> 
+<p>@Html.ValidationSummary("", new {style="color:red; font-weight:bold;"})</p>
+
+@using (Html.BeginForm())
+{
+    <p>Enter Name: @Html.TextBox("FullName", "", new {@class="form-control"})
+    <b style="color:red; font-weight:bold;">@ViewData["NameError"]</b>
+    @*@Html.ValidationMessage("FullName", new { style="color:red; font-weight:bold;"})*@
+    </p>
+    <p>
+        Enter Age: @Html.TextBox("Age", "", new { @class = "form-control" })
+        <b style="color:red; font-weight:bold;">@ViewBag.AgeError</b>
+        @*@Html.ValidationMessage("Age", new { style = "color:red; font-weight:bold;" })*@
+    </p>
+    <p>
+        Enter Email: @Html.TextBox("Email", "", new { @class = "form-control" })
+        <b style="color:red; font-weight:bold;">@TempData["EmailError"]</b>
+        @*@Html.ValidationMessage("Email", new { style = "color:red; font-weight:bold;" })*@
+    </p>
+
+    <input type="submit" value="Submit" class="btn btn-primary form-control"/>
+    @Html.Raw(TempData["SuccessMessge"])
+}

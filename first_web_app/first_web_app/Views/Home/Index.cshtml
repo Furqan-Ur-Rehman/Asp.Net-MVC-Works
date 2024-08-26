@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<h2>This is the first Home Controller and its index view</h2>
+
+<!--Inline Expression Statement-->
+<p>Today Date and Time is: @DateTime.Now</p>
+<p>This Year is: @DateTime.Now.Year</p>
+
+<!--Declaring Variables-->
+
+@{
+    string name = "Asp.Net MVC and C#";
+    var Todaystime = DateTime.Now.ToLongTimeString();
+
+}
+
+<h3>Language is: @name</h3>
+<h3>Todays Time is: @Todaystime</h3>
+
+
+<!--Conditional Statement, Switch Case, for and foreach loops with array-->
+@{
+    int marks = 80;
+    if (marks >= 80)
+    {
+        <h3>Your Grade is: A-1</h3>
+    }
+    else
+    {
+        <h3>Your Grade is below: A-1</h3>
+    }
+
+    string fruit = "apple";
+    switch (fruit)
+    {
+        case "banana":
+            <h3>Your Fruit is Banana</h3>
+            break;
+
+        case "Orange":
+            <h3>Your Fruit is Orange</h3>
+            break;
+
+        case "apple":
+        case "Apple":
+            <h3>Your Fruit is Apple</h3>
+            break;
+
+        default:
+            <h3>Your entered invalid fruit</h3>
+            break;
+    }
+
+    for (int i = 0; i <= 10; i++)
+    {
+        <h3>@i</h3>
+    }
+
+    string[] languages = { "C#", "ASP.NET MVC", "PHP", "Html", "Css", "javascript" };
+    foreach (string lang in languages)
+    {
+        <h3>@lang</h3>
+    }
+}
+
+
+

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Temp_data";
+}
+
+<h2>Temp_data</h2>
+
+<h1>Data Comes from Following Objects:</h1>
+
+<hr />
+
+<h3>ViewData is: @ViewData["msg1"]</h3>
+<h3>ViewBag is: @ViewBag.msg2</h3>
+<h3>TempData is: @TempData["msg3"]</h3>
+<h3>Session is: @Session["msg4"]</h3>
+
+<hr />
+
+<h1>TempData Array</h1>
+<ul>
+    @{
+        foreach (string data in (string[])TempData["games_array"])
+        {
+            <li>@data</li>
+        }
+    }
+</ul>
+
+<hr />
+
+<h1>TempData List</h1>
+<ul>
+    @{
+        foreach (string data in (List<string>)TempData["languages_list"])
+        {
+            <li>@data</li>
+        }
+    }
+</ul>
+
+<hr />
+<h1>Session Array</h1>
+<ul>
+    @{ 
+        foreach (string item in (string[])Session["games_array"])
+        {
+            <li>@item</li>
+        }
+    }
+</ul>
+
+<a href="@Url.Action("AboutUs","Home")">About Us</a>

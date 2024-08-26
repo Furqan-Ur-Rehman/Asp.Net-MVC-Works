@@ -1,0 +1,16 @@
+﻿@model Strongly_Typed_Html_Helper.Models.Calculations
+@{
+    ViewBag.Title = "House";
+}
+
+<h2>House</h2>
+
+@using (Html.BeginForm())
+{
+    <p>@Html.LabelFor(model => model.Num1) &nbsp; @Html.TextBoxFor(model => model.Num1)</p>
+    <p>@Html.LabelFor(model => model.Num2) &nbsp; @Html.TextBoxFor(model => model.Num2)</p>
+
+    <input type="submit"  value="Submit"/>
+}
+
+<b>Addition is: @ViewBag.result</b>

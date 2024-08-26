@@ -1,0 +1,22 @@
+﻿@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    Html.BeginForm("Index", "Home");
+
+}
+
+<h3 class="text-center font-weight-bold">Login</h3>
+@Html.Label("UserName")
+@Html.TextBox("UserName", "", new { @class = "form-control", @placeholder = "Enter Your Username", title = "User Name" })
+<br />
+@Html.Label("Password")
+@Html.Password("pass", "", new { @class = "form-control" })
+<br />
+<input type="submit" value="Submit" class="btn btn-primary" />
+
+@{
+
+    Html.EndForm();
+
+}
